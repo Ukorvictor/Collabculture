@@ -80,7 +80,6 @@ export default function ContactForm() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-4">
           <a href="/" className="text-sm uppercase tracking-[0.25em] text-[#f0ede6]/70 transition hover:text-[#C8FF00]">Back to home</a>
-          <a href="/admin/submissions" className="text-sm uppercase tracking-[0.25em] text-[#C8FF00] transition hover:text-[#d7ff5c]">View submissions</a>
         </div>
         <button type="submit" className="rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-6 py-3 text-sm uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c]">Submit application</button>
       </div>
