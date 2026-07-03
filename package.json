@@ -1,12 +1,16 @@
 {
+  "homepage": "https://github.io",
   "name": "collab-culture",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start"
-}
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
   "dependencies": {
     "framer-motion": "^12.40.0",
     "next": "16.2.7",
