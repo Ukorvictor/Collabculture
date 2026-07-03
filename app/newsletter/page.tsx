@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
 
 export default function NewsletterPage() {
@@ -8,7 +8,7 @@ export default function NewsletterPage() {
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!email.trim() || !email.includes("@")) {
@@ -19,13 +19,16 @@ export default function NewsletterPage() {
     setIsSubmitting(true);
     setStatus("");
 
+    const formData = new FormData();
+    formData.append('access_key', 'f723ff27-46bc-43d2-a71c-c7c23c49abc2');
+    formData.append('email', email);
+    formData.append('subject', 'Collab Culture newsletter signup');
+    formData.append('message', `Newsletter signup from ${email}`);
+
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
+        body: formData,
       });
 
       const data = await response.json();
@@ -51,7 +54,7 @@ export default function NewsletterPage() {
             Stay in the loop.
           </h1>
           <p className="text-base leading-7 text-[#f0ede6]/80">
-            Get the latest calls, culture updates, and curated collaborations delivered straight to your inbox. Sign up with your email and be the first to hear what’s next from Collab Culture.
+            Get the latest calls, culture updates, and curated collaborations delivered straight to your inbox.
           </p>
 
           <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-[1.8fr_1fr]">

@@ -1,7 +1,6 @@
-'use client';
-
+import { promises as fs } from 'fs';
+import path from 'path';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 type Submission = {
   fullName: string;
@@ -13,51 +12,35 @@ type Submission = {
   submittedAt: string;
 };
 
-export default function SubmissionsPage() {
-  const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+const dataPath = path.join(process.cwd(), 'data', 'prospective-members.json');
 
-  useEffect(() => {
-    const loadSubmissions = async () => {
-      try {
-        const response = await fetch('/api/join');
-        const data = await response.json();
-        setSubmissions(Array.isArray(data) ? data : []);
-      } catch (error) {
-        console.error('Unable to load submissions', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+async function getSubmissions(): Promise<Submission[]> {
+  try {
+    const file = await fs.readFile(dataPath, 'utf8');
+    return JSON.parse(file) as Submission[];
+  } catch (error) {
+    return [];
+  }
+}
 
-    loadSubmissions();
-  }, []);
+export default async function SubmissionsPage() {
+  const submissions = await getSubmissions();
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-16 lg:px-8">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div className="space-y-3">
-          <p className="text-xs uppercase tracking-[0.35em] text-[#C8FF00]">Submission dashboard</p>
-          <h1 className="text-4xl uppercase tracking-[0.18em] text-[#f0ede6] md:text-5xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-            Prospective members
-          </h1>
-          <p className="max-w-2xl text-base text-[#f0ede6]/75">
-            Review incoming applications and download the full list as a CSV file.
-          </p>
-        </div>
-        <a
-          href="/api/join?format=csv"
-          className="rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-6 py-3 text-sm uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c]"
-        >
-          Download CSV
-        </a>
+      <div className="space-y-3">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#C8FF00]">Submission dashboard</p>
+        <h1 className="text-4xl uppercase tracking-[0.18em] text-[#f0ede6] md:text-5xl" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+          Prospective members
+        </h1>
+        <p className="max-w-2xl text-base text-[#f0ede6]/75">
+          Review incoming applications from the latest static export snapshot.
+        </p>
       </div>
 
       <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black/55 shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl">
-        {isLoading ? (
-          <div className="p-8 text-sm text-[#f0ede6]/70">Loading submissions...</div>
-        ) : submissions.length === 0 ? (
-          <div className="p-8 text-sm text-[#f0ede6]/70">No submissions yet.</div>
+        {submissions.length === 0 ? (
+          <div className="p-8 text-sm text-[#f0ede6]/70">No submissions are available yet.</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-white/10 text-left text-sm">

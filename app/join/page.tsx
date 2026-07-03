@@ -55,15 +55,25 @@ export default function JoinPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/join', {
+      const formData = new FormData();
+      formData.append('access_key', 'f723ff27-46bc-43d2-a71c-c7c23c49abc2');
+      formData.append('subject', 'Collab Culture join application');
+      formData.append('name', form.fullName);
+      formData.append('email', form.email);
+      formData.append('phone', form.phone);
+      formData.append('message', form.story);
+      formData.append('alias', form.alias);
+      formData.append('consent', String(form.consent));
+      formData.append('submittedAt', new Date().toISOString());
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: formData,
       });
 
       const payload = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || payload.success !== true) {
         throw new Error(payload.message || 'Your application could not be submitted.');
       }
 
