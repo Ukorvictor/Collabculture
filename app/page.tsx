@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ProjectCard } from "@/components/project-card";
 import { members } from "@/app/members/data";
@@ -22,7 +23,7 @@ export default function Home() {
                 COLLAB.<br />CREATE.<br />CULTURE.
               </h1>
               <p className="max-w-xl text-lg text-[#f0ede6]/75">A living ecosystem for creatives and business innovators across diverse sectors, with the ambition to scale and grow.</p>
-              <a href="/join" className="inline-flex rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-6 py-3 text-sm uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c]">Join the network</a>
+              <Link href="/join" className="inline-flex rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-6 py-3 text-sm uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c]">Join the network</Link>
             </motion.div>
           </div>
         </div>
