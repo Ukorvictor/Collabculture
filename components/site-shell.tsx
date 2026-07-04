@@ -17,7 +17,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
           <Link
             href="/join"
-            className="inline-flex self-start rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-4 py-2 text-xs uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c] md:self-auto"
+            className="inline-flex self-start rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-black transition hover:bg-[#d7ff5c] md:self-auto md:px-4 md:text-xs md:tracking-[0.3em]"
           >
             Join the network
           </Link>
