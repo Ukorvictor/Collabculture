@@ -5,11 +5,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative flex min-h-screen flex-col">
       <header className="sticky top-0 z-30 border-b border-white/10 bg-black/75 backdrop-blur-xl">
-        <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <nav className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-6 py-4 lg:px-8 md:flex-row md:items-center md:justify-between">
           <Link href="/" className="text-xs uppercase tracking-[0.45em] text-[#C8FF00]">
             COLLAB CULTURE
           </Link>
-          <div className="hidden items-center gap-6 text-sm uppercase tracking-[0.22em] text-[#f0ede6]/80 md:flex">
+          <div className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.2em] text-[#f0ede6]/80 md:w-auto md:gap-6 md:text-sm md:tracking-[0.22em]">
             <Link href="/" className="transition hover:text-[#C8FF00]">Home</Link>
             <Link href="/collab-board" className="transition hover:text-[#C8FF00]">Collab Board</Link>
             <Link href="/members" className="transition hover:text-[#C8FF00]">Members</Link>
@@ -17,7 +17,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
           <Link
             href="/join"
-            className="rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-4 py-2 text-xs uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c]"
+            className="inline-flex self-start rounded-full border border-[#C8FF00]/40 bg-[#C8FF00] px-4 py-2 text-xs uppercase tracking-[0.3em] text-black transition hover:bg-[#d7ff5c] md:self-auto"
           >
             Join the network
           </Link>
