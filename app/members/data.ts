@@ -13,7 +13,7 @@ export const members: Member[] = [
     alias: "Veecii",
     headline: "Music producer, songwriter, talent manager, and entrepreneur",
     bio:
-      "Victor is a music producer, songwriter, talent manager, and entrepreneur known for blending Afrobeats, R&B, and Afro-fusion sounds. With over a decade of experience, he combines creativity, music business expertise, and artist mentorship to empower the next generation of talent. He also holds a Master’s degree in Artificial Intelligence, bringing a unique intersection of technology and music to his work.",
+      "Victor is a co-founder of Collab Culture, who is also a music producer, songwriter, talent manager, and entrepreneur known for blending Afrobeats, R&B, and Afro-fusion sounds. With over a decade of experience, he combines creativity, music business expertise, and artist mentorship to empower the next generation of talent. He also holds a Master’s degree in Artificial Intelligence, bringing a unique intersection of technology and music to his work.",
     image: "/members/victor-ukor.jpeg",
     tags: ["Music", "Artist Development", "AI"],
   },
@@ -22,7 +22,7 @@ export const members: Member[] = [
     alias: "Snow",
     headline: "Multidisciplinary creative, stylist, and brand strategist",
     bio:
-      "Mayowa is a multidisciplinary creative who blends fashion, visual storytelling, brand strategy, and cultural insight. He operates at the intersection of creativity and commercial thinking, combining a stylist’s eye with a strategist’s mindset. His work is rooted in streetwear, brand identity, visual merchandising, and campaign development, with a strong interest in creating immersive experiences that connect emotionally with audiences. He is also the founder of Blacksnow.",
+      "Mayowa is a co-founder of Collab Culture and a multidisciplinary creative who blends fashion, visual storytelling, brand strategy, and cultural insight. He operates at the intersection of creativity and commercial thinking, combining a stylist’s eye with a strategist’s mindset. His work is rooted in streetwear, brand identity, visual merchandising, and campaign development, with a strong interest in creating immersive experiences that connect emotionally with audiences. He is also the founder of Blacksnow.",
     image: "/members/New-Mayowa-Komolafe.jpeg",
     tags: ["Fashion", "Brand Strategy", "Visual Storytelling"],
   },
